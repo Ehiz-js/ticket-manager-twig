@@ -1,0 +1,13 @@
+# Composer
+/vendor/
+composer.lock
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/
