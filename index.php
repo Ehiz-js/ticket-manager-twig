@@ -116,15 +116,16 @@ switch ($route) {
         break;
 
     // Authenticated / app pages
-    case '/app/dashboard':
-        if (!isAuthenticated()) {
-            header("Location: /login");
-            exit;
-        } elseif ($route === '/app/dashboard') {
-    $user = $dataManager->getUserByEmail($_SESSION['user_email'] ?? '');
+case '/app/dashboard':
+    if (!isAuthenticated()) {
+        header("Location: /login");
+        exit;
+    }
+
+    $user = $dataManager->getUserByEmail($_SESSION['user_email']);
     $tickets = $user['tickets'] ?? [];
 
-    // Count tickets
+    // Count tickets by status
     $totalTickets = count($tickets);
     $openTickets = count(array_filter($tickets, fn($t) => $t['status'] === 'open'));
     $inProgressTickets = count(array_filter($tickets, fn($t) => $t['status'] === 'in_progress'));
@@ -138,16 +139,8 @@ switch ($route) {
         'closedTickets' => $closedTickets,
         'current_route' => $route
     ]);
-}
+    break;
 
-        $user = $dataManager->getUserByEmail($_SESSION['user_email']);
-        $tickets = $user['tickets'] ?? [];
-
-        echo $twig->render('components/dashboard.twig', [
-            'tickets' => $tickets,
-            'current_route' => $route
-        ]);
-        break;
 
     case '/app/tickets':
         if (!isAuthenticated()) {
