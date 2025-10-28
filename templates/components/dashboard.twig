@@ -1,0 +1,56 @@
+{% extends "applayout.html.twig" %}
+
+{% block title %}Dashboard - Tickit{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/public/css/components/dashboard.css">
+{% endblock %}
+
+{% block app_content %}
+<section class="dashboardSection">
+  <div class="container">
+    <h1 class="title">Welcome back, {{ user.name|default('User') }}</h1>
+
+    <div class="majorStat">
+      <h2>Total Tickets</h2>
+      <p class="statNumber">{{ totalTickets }}</p>
+    </div>
+
+    <div class="minorStats">
+      <div class="statCard">
+        <h3>Open Tickets</h3>
+        <progress value="{{ openTickets }}" max="{{ totalTickets|default(1) }}" class="progressBar"></progress>
+        <span>{{ openTickets }}</span>
+      </div>
+
+      <div class="statCard">
+        <h3>In Progress</h3>
+        <progress value="{{ inProgressTickets }}" max="{{ totalTickets|default(1) }}" class="progressBar"></progress>
+        <span>{{ inProgressTickets }}</span>
+      </div>
+
+      <div class="statCard">
+        <h3>Resolved Tickets</h3>
+        <progress value="{{ closedTickets }}" max="{{ totalTickets|default(1) }}" class="progressBar"></progress>
+        <span>{{ closedTickets }}</span>
+      </div>
+    </div>
+
+    <div class="quickActions">
+      <a href="/app/tickets" class="actionBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="plusIcon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+        Create Ticket
+      </a>
+
+      <a href="/app/tickets#ticketList" class="actionBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="ticketIcon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5v3A2.25 2.25 0 0118 10.5a2.25 2.25 0 010 4.5 2.25 2.25 0 011.5 2.25v3H3.75v-3A2.25 2.25 0 015.25 15a2.25 2.25 0 010-4.5A2.25 2.25 0 013.75 8.25v-3z" />
+        </svg>
+        View Tickets
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,296 @@
+@import "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap";
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	gap: 3rem;
+	background-color: var(--color-surface-dark);
+	color: var(--color-text-dark);
+	height: 80vh;
+	margin-bottom: 18rem;
+}
+
+/* Scoped class for header since "header" is a global element */
+.header {
+	display: flex;
+	font-size: 4rem;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	font-style: italic;
+	font-family: "Great Vibes";
+	width: 100%;
+	gap: 5px;
+}
+.header span {
+	color: #23a0fe;
+}
+.header img {
+	height: 40px;
+}
+
+.heroContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 8rem;
+	width: 100%;
+	height: 100%;
+}
+
+article {
+	text-align: center;
+}
+
+h1 {
+	font-size: 13rem;
+	opacity: 0;
+	animation: slideRight 0.8s ease-out forwards;
+}
+
+h1 span {
+	color: var(--color-primary);
+}
+
+@keyframes slideRight {
+	0% {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes slideUp {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.heroContent p {
+	font-family: "Great Vibes";
+	font-size: 3rem;
+	font-weight: 700;
+	color: var(--color-primary);
+	opacity: 0;
+	animation: slideUp 0.8s ease-out forwards;
+	animation-delay: 0.3s;
+}
+
+.heroButtons {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	opacity: 0;
+	animation: slideUp 0.8s ease-out forwards;
+	animation-delay: 0.7s;
+}
+
+.btn {
+	padding: 12px 18px;
+	color: var(--color-text);
+	border-radius: 10px;
+	font-size: 1.5rem;
+	border: 1px solid var(--color-accent);
+	transition: 0.5s ease;
+}
+
+.btnPrimary {
+	background-color: var(--color-primary);
+}
+.btnSecondary {
+	background-color: white;
+}
+
+.btn:hover {
+	cursor: pointer;
+	transform: translateX(5px) scale(1.1);
+	color: white;
+	background-color: var(--color-primary-hover);
+}
+
+.waves {
+	position: absolute;
+	max-width: 1440px;
+	width: 100vw;
+	top: 85%;
+	z-index: -1;
+}
+
+.circle1 {
+	position: absolute;
+	width: 500px;
+	height: 390px;
+	left: -10%;
+	top: 35%;
+	background-color: transparent;
+	border: 8px solid var(--color-accent);
+	border-radius: 50%;
+	filter: blur(8px);
+	pointer-events: none;
+}
+
+.circle2 {
+	position: absolute;
+	width: 500px;
+	height: 390px;
+	right: -10%;
+	bottom: 90%;
+	background-color: transparent;
+	border: 8px solid var(--color-accent);
+	border-radius: 50%;
+	filter: blur(8px);
+	pointer-events: none;
+}
+
+/* ===== Responsive Adjustments ===== */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+	.hero {
+		height: 85vh;
+		margin-bottom: 12rem;
+	}
+
+	.header {
+		font-size: 3rem;
+	}
+
+	h1 {
+		font-size: 9rem;
+	}
+	.waves {
+		top: 99%;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.heroContent {
+		gap: 6rem;
+	}
+
+	.heroContent p {
+		font-size: 2.5rem;
+	}
+
+	.circle1 {
+		width: 380px;
+		height: 300px;
+		border-width: 6px;
+		z-index: 2;
+		top: 35%;
+	}
+	.circle2 {
+		width: 380px;
+		height: 300px;
+		border-width: 6px;
+	}
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+	.hero {
+		height: 95vh; /* makes hero + wave fill screen */
+		margin-bottom: 8rem;
+		padding: 2rem 1.5rem;
+	}
+
+	.header {
+		font-size: 2.6rem;
+		gap: 0.5rem;
+	}
+	.header img {
+		height: 30px;
+	}
+
+	h1 {
+		font-size: 6rem;
+	}
+
+	.heroContent p {
+		font-size: 2.2rem;
+	}
+
+	.heroButtons {
+		flex-direction: row;
+		gap: 1rem;
+	}
+
+	.btn {
+		font-size: 1.3rem;
+		padding: 10px 16px;
+	}
+
+	.waves {
+		width: 100%;
+		top: 99%;
+	}
+
+	.circle1 {
+		width: 280px;
+		height: 220px;
+		left: -15%;
+		top: 25%;
+		border-width: 4px;
+	}
+
+	.circle2 {
+		width: 280px;
+		height: 220px;
+		right: -15%;
+		bottom: 95%;
+		border-width: 4px;
+	}
+}
+
+/* Small Phones (≤480px) */
+@media (max-width: 480px) {
+	.hero {
+		height: 95vh;
+		margin-bottom: 5rem;
+	}
+
+	h1 {
+		font-size: 4.5rem;
+	}
+
+	.heroContent p {
+		font-size: 1.8rem;
+	}
+
+	.header {
+		font-size: 2.3rem;
+	}
+	.header img {
+		height: 25px;
+	}
+
+	.waves {
+		top: 99%;
+	}
+
+	.btn {
+		font-size: 1.2rem;
+		padding: 8px 14px;
+	}
+
+	.circle1,
+	.circle2 {
+		width: 200px;
+		height: 160px;
+		border-width: 3px;
+	}
+}

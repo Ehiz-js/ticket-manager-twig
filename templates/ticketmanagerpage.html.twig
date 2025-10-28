@@ -1,0 +1,18 @@
+{% extends "applayout.html.twig" %}
+
+{% block title %}Ticket Manager - Tickit{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/public/css/components/ticketform.css">
+  <link rel="stylesheet" href="/public/css/components/ticketlist.css">
+{% endblock %}
+
+{% block app_content %}
+  {# Ticket Form Component #}
+  {% include 'components/ticketform.twig' with { editTicket: editTicket } %}
+
+  {# Ticket List Component #}
+  <div id="ticketList">
+    {% include 'components/ticketlist.twig' %}
+  </div>
+{% endblock %}

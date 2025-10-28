@@ -1,0 +1,39 @@
+[
+    {
+        "name": "test",
+        "email": "test@example",
+        "password": "$2y$12$\/9Jtw.m9mx65ZHJtlnNnD.uC34YGMTP3hlvI5BR1dVaJ6L949gWOG",
+        "tickets": [
+            {
+                "id": "t1",
+                "title": "Reprehenderit volup",
+                "description": "Magni do ullam nisi ",
+                "status": "closed",
+                "priority": "low",
+                "date": "2025-10-28"
+            },
+            {
+                "id": "t2",
+                "title": "Labore et optio sin",
+                "description": "Esse expedita neque ",
+                "status": "closed",
+                "priority": "high",
+                "date": "2025-10-28"
+            },
+            {
+                "id": "t4",
+                "title": "Exercitationem nisi zzzzzz",
+                "description": "Laboris earum quasi ",
+                "status": "open",
+                "priority": "medium",
+                "date": "2025-10-28"
+            }
+        ]
+    },
+    {
+        "name": "Ehizojie Azamegbe",
+        "email": "azamegbesamuel@gmail.com",
+        "password": "$2y$12$Fqc8crTm2xrQ.ipu\/HvUeuJIwvMoNs.DysgsWMvkZhEnea1LkbjTC",
+        "tickets": []
+    }
+]

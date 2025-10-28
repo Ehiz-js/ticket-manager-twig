@@ -1,0 +1,53 @@
+{% extends "layout.twig" %}
+
+{% block title %}Navbar - Tickit{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/public/css/components/navbar.css">
+  <!-- Optional: Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/14f5c21a4d.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+  <div class="logo">
+    Tick<span>it</span>
+    <img src="/public/tickit-logo.svg" alt="Tickit logo" />
+  </div>
+
+  <div class="hamburger" id="openMenu">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul class="navLinks" id="navLinks">
+    <button class="closeBtn" id="closeMenu">&times;</button>
+
+    <li>
+      <a href="/app/dashboard" class="{{ current_route == '/app/dashboard' ? 'activeLink' }}">
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="/app/tickets" class="{{ current_route == '/app/tickets' ? 'activeLink' }}">
+        Tickets
+      </a>
+    </li>
+    <li>
+      <button class="logoutBtn" onclick="window.location.href='/logout'">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const openBtn = document.getElementById('openMenu');
+  const closeBtn = document.getElementById('closeMenu');
+  const navLinks = document.getElementById('navLinks');
+
+  openBtn?.addEventListener('click', () => navLinks.classList.add('open'));
+  closeBtn?.addEventListener('click', () => navLinks.classList.remove('open'));
+</script>
+{% endblock %}

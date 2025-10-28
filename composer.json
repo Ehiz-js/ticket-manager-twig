@@ -1,0 +1,6 @@
+{
+    "name": "ehiz/tickit-twig",
+    "require": {
+        "twig/twig": "^3.21"
+    }
+}

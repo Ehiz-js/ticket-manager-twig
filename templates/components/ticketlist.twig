@@ -1,0 +1,119 @@
+{% extends "layout.twig" %}
+
+{% block title %}Your Tickets - Tickit{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/public/css/components/ticketlist.css">
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <h2 class="heading">Your Tickets</h2>
+
+  {% if successDelete %}
+    <p class="successMessage">Ticket deleted successfully!</p>
+  {% elseif successUpdate %}
+    <p class="successMessage">Ticket updated successfully!</p>
+  {% elseif success %}
+    <p class="successMessage">Ticket created successfully!</p>
+  {% endif %}
+
+  <div class="list">
+    {% if tickets is empty %}
+      <p class="emptyMessage">No tickets found. Create one to get started!</p>
+    {% else %}
+      {% for ticket in tickets %}
+        <div class="card" data-ticket-id="{{ ticket.id }}" data-priority="{{ ticket.priority }}">
+          <div class="status {{ ticket.status }}">{{ ticket.status|replace({'_':' '})|capitalize }}</div>
+          <h3 class="title">{{ ticket.title }}</h3>
+          <p class="desc">{{ ticket.description }}</p>
+          <div class="footerTicket">
+            <span class="date">{{ ticket.date ?? "N/A" }}</span>
+            <div class="actions">
+              <button class="editBtn">Edit</button>
+              <button type="button" class="deleteBtn">Delete</button>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  {# Confirm Delete Modal (hidden by default) #}
+  <div class="confirmOverlay" style="display: none;">
+    <div class="confirmBox">
+      <h3>Are you sure you want to delete this ticket?</h3>
+      <div class="confirmActions">
+        <button class="confirmDelete">Delete</button>
+        <button class="confirmCancel">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // DELETE functionality
+    const deleteButtons = document.querySelectorAll('.deleteBtn');
+    const overlay = document.querySelector('.confirmOverlay');
+    let ticketToDelete = null;
+
+    deleteButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.target.closest('.card');
+        ticketToDelete = card.dataset.ticketId;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    document.querySelector('.confirmCancel').addEventListener('click', () => {
+      overlay.style.display = 'none';
+      ticketToDelete = null;
+    });
+
+    document.querySelector('.confirmDelete').addEventListener('click', () => {
+      if (!ticketToDelete) return;
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/app/tickets';
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'delete_id';
+      input.value = ticketToDelete;
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+    });
+
+    // EDIT functionality
+    const editButtons = document.querySelectorAll('.editBtn');
+    const form = document.querySelector('.form');
+
+    editButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.target.closest('.card');
+        const ticketId = card.dataset.ticketId;
+
+        // Prefill form
+        const title = card.querySelector('.title').textContent;
+        const desc = card.querySelector('.desc').textContent;
+        const status = card.querySelector('.status').classList[1];
+        const priority = card.dataset.priority || 'high';
+
+        form.querySelector('input[name="edit_id"]').value = ticketId;
+        form.querySelector('input[name="title"]').value = title;
+        form.querySelector('textarea[name="description"]').value = desc;
+        form.querySelector('select[name="status"]').value = status;
+        form.querySelector('select[name="priority"]').value = priority;
+
+        form.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Hide success messages after 2 seconds
+    const messages = document.querySelectorAll('.successMessage');
+    messages.forEach(msg => {
+      setTimeout(() => msg.style.display = 'none', 2000);
+    });
+  </script>
+</section>
+{% endblock %}

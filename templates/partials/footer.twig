@@ -1,0 +1,20 @@
+{% extends "layout.twig" %}
+
+{% block title %}Footer - Tickit{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/public/css/components/footer.css">
+{% endblock %}
+
+{% block content %}
+<footer class="footer">
+  <div class="container">
+    <div class="brand">
+      <img src="/public/tickit-logo.svg" alt="Tickit logo" />
+      <h3>Tick<span>it</span></h3>
+    </div>
+
+    <p class="copyright">© {{ "now"|date("Y") }} Tickit. All rights reserved.</p>
+  </div>
+</footer>
+{% endblock %}

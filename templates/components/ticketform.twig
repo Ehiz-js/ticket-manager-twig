@@ -1,0 +1,42 @@
+{% extends "layout.twig" %}
+
+{% block title %}Create/Edit Ticket - Tickit{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/public/css/components/ticket-form.css">
+{% endblock %}
+
+{% block content %}
+<form class="form" method="POST" action="/app/tickets">
+  <h2>{% if editTicket %}Edit Ticket{% else %}Create New Ticket{% endif %}</h2>
+
+  {# Hidden field to hold the ticket ID when editing #}
+  <input type="hidden" name="edit_id" value="{{ editTicket.id ?? '' }}">
+
+  <label for="title">Title</label>
+  <input id="title" type="text" name="title" value="{{ editTicket.title ?? '' }}" required />
+
+  <label for="description">Description</label>
+  <textarea id="description" name="description" rows="4">{{ editTicket.description ?? '' }}</textarea>
+
+  <label for="status">Status</label>
+  <select id="status" name="status">
+    <option value="open" {% if editTicket.status=='open' %}selected{% endif %}>Open</option>
+    <option value="in_progress" {% if editTicket.status=='in_progress' %}selected{% endif %}>In Progress</option>
+    <option value="closed" {% if editTicket.status=='closed' %}selected{% endif %}>Closed</option>
+  </select>
+
+  <label for="priority">Priority</label>
+  <select id="priority" name="priority">
+    <option value="high" {% if editTicket.priority=='high' %}selected{% endif %}>High</option>
+    <option value="medium" {% if editTicket.priority=='medium' %}selected{% endif %}>Medium</option>
+    <option value="low" {% if editTicket.priority=='low' %}selected{% endif %}>Low</option>
+  </select>
+
+  <button type="submit">{% if editTicket %}Update Ticket{% else %}Create Ticket{% endif %}</button>
+
+  {% if success %}
+    <p class="success">Ticket saved successfully!</p>
+  {% endif %}
+</form>
+{% endblock %}

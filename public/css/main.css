@@ -1,0 +1,114 @@
+/* Taken from getting started guide at: https://leafletjs.com/examples/quick-start/ */
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap";
+
+/* These CSS variables are global, so they are available in all CSS modules */
+:root {
+	--color-brand--1: #ffb545;
+	--color-brand--2: #00c46a;
+
+	--color-dark--0: #242a2e;
+	--color-dark--1: #2d3439;
+	--color-dark--2: #42484d;
+	--color-light--1: #aaa;
+	--color-light--2: #ececec;
+	--color-light--3: #d6dee0;
+
+	/* 🎯 Primary Brand Colors */
+	--color-primary: #23a0fe; /* Main brand blue (buttons, highlights) */
+	--color-primary-hover: #207abf; /* Slightly darker blue for hover states */
+	--color-primary-light: #dbeafe; /* Light tint for backgrounds or tags */
+
+	/* 🩵 Secondary / Accent Blues */
+	--color-accent: #38bdf8; /* Lighter blue accent (borders, icons, charts) */
+	--color-accent-hover: #0ea5e9; /* Medium cyan-blue for active states */
+	--color-accent-light: #e0f2fe; /* Soft background blue */
+
+	/* ⚫ Neutral / Grays */
+	--color-bg: #f9fafb; /* Page background */
+	--color-surface: #ffffff; /* Card or container background */
+	--color-border: #e5e7eb; /* Borders and dividers */
+	--color-text: #1e293b; /* Primary text (dark gray-blue) */
+	--color-text-secondary: #64748b; /* Secondary text */
+	--color-muted: #94a3b8; /* Muted / placeholder text */
+
+	/* 🌘 Dark Mode (optional toggle) */
+	--color-bg-dark: #0f172a; /* Main dark background */
+	--color-surface-dark: #1e293b; /* Cards / panels in dark mode */
+	--color-text-dark: #f1f5f9; /* Primary text in dark mode */
+	--color-text-secondary-dark: #cbd5e1; /* Secondary text in dark mode */
+
+	/* 🧱 Shadows & Radii */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+	--radius-sm: 6px;
+	--radius-md: 12px;
+	--radius-lg: 20px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	border: none;
+	color: inherit;
+	text-decoration: none;
+}
+::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	scrollbar-width: none; /* For Firefox */
+	-ms-overflow-style: none; /* For Internet Explorer/Edge */
+}
+
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	max-width: 1440px;
+	margin: 0 auto;
+	position: relative;
+	overflow-x: hidden;
+	line-height: 1.6;
+}
+
+label {
+	font-size: 1.6rem;
+	font-weight: 600;
+}
+
+input,
+textarea {
+	width: 100%;
+	padding: 0.8rem 1.2rem;
+	font-family: inherit;
+	font-size: 1.6rem;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--color-light--3);
+	transition: all 0.2s;
+}
+
+input:focus {
+	outline: none;
+	background-color: #fff;
+}
+
+.cta:link,
+.cta:visited {
+	display: inline-block;
+	background-color: var(--color-primary);
+	color: var(--color-text-dark);
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 1.6rem;
+	font-weight: 600;
+	padding: 1rem 3rem;
+	border-radius: 5px;
+}

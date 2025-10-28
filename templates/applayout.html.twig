@@ -1,0 +1,12 @@
+{# templates/applayout.html.twig #}
+{% extends "layout.twig" %}
+
+{% block content %}
+  {% include "partials/navbar.twig" %}
+
+  <main>
+    {% block app_content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.twig" %}
+{% endblock %}

@@ -1,0 +1,147 @@
+@import "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap";
+
+.hero {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	gap: 3rem;
+	background-color: var(--color-surface-dark);
+	color: var(--color-text-dark);
+	height: 80vh;
+	margin-bottom: 20rem;
+}
+
+header {
+	display: flex;
+	font-size: 4rem;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	font-style: italic;
+	font-family: "Great Vibes";
+	width: 100%;
+	gap: 5px;
+}
+header span {
+	color: #23a0fe;
+}
+header img {
+	height: 40px;
+}
+
+.hero-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 8rem;
+	width: 100%;
+	height: 100%;
+}
+article {
+	text-align: center;
+}
+
+h1 {
+	font-size: 13rem;
+	opacity: 0;
+	animation: slideRight 0.8s ease-out forwards;
+}
+
+h1 span {
+	color: var(--color-primary);
+}
+@keyframes slideRight {
+	0% {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes slideUp {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.hero-content p {
+	font-family: "Great Vibes";
+	font-size: 3rem;
+	font-weight: 700;
+	color: var(--color-primary);
+	opacity: 0;
+	animation: slideUp 0.8s ease-out forwards;
+	animation-delay: 0.3s;
+}
+
+.hero-buttons {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	opacity: 0;
+	animation: slideUp 0.8s ease-out forwards;
+	animation-delay: 0.7s;
+}
+.btn {
+	padding: 12px 18px;
+	color: var(--color-text);
+	border-radius: 10px;
+	font-size: 1.5rem;
+	border: 1px solid var(--color-accent);
+	transition: 0.5s ease;
+}
+
+.btn-primary {
+	background-color: var(--color-primary);
+}
+.btn-secondary {
+	background-color: whitew;
+}
+
+.btn:hover {
+	cursor: pointer;
+	transform: translateX(5px) scale(1.1);
+	color: white;
+	background-color: var(--color-primary-hover);
+}
+
+.waves {
+	position: absolute;
+	top: 90%;
+	z-index: -1;
+	margin-bottom: 5rem;
+}
+.circle-1 {
+	position: absolute;
+	width: 500px;
+	height: 390px;
+	left: -10%;
+	top: 100%;
+	background-color: transparent;
+	border: 8px solid var(--color-accent);
+	border-radius: 50%;
+}
+.circle-2 {
+	position: absolute;
+	width: 500px;
+	height: 390px;
+	right: -10%;
+	bottom: 60%;
+	background-color: transparent;
+	border: 8px solid var(--color-accent);
+	border-radius: 50%;
+}
